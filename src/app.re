@@ -45,6 +45,9 @@ let make = (_children) => {
         value=(_self.state.sqlText)
         onChange=(_self.reduce(onTextChange))
       />
-     <p className="pretty-sql">{ReasonReact.stringToElement(prettifySql(_self.state.sqlText))}</p>
+
+      <SyntaxHighlight language="sql">
+        {ReasonReact.stringToElement(prettifySql(_self.state.sqlText))}
+      </SyntaxHighlight>  
     </div>
 };
