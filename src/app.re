@@ -39,15 +39,27 @@ let make = (_children) => {
       })
     },
   render: (_self) =>
-    <div className="App">
-      <textarea
-        _type="text"
-        value=(_self.state.sqlText)
-        onChange=(_self.reduce(onTextChange))
-      />
-
-      <SyntaxHighlight language="sql">
-        {ReasonReact.stringToElement(prettifySql(_self.state.sqlText))}
-      </SyntaxHighlight>  
-    </div>
+			<div>
+				<div className="uk-background-primary uk-light uk-text-center uk-padding-large">	
+					<h1 className="uk-heading-hero">
+						{ReasonReact.stringToElement("Pretty SQL")}
+					</h1>
+					<p>
+						{ReasonReact.stringToElement("Type your SQL below to prettify it")}
+					</p>
+				</div>
+				<div className="App uk-container">
+					<textarea
+						className="uk-textarea"
+						placeholder="Enter SQL here"
+						_type="text"
+						value=(_self.state.sqlText)
+						onChange=(_self.reduce(onTextChange))
+					/>
+				
+					<SyntaxHighlight language="sql">
+						{ReasonReact.stringToElement(prettifySql(_self.state.sqlText))}
+					</SyntaxHighlight>  
+				</div>
+			</div>
 };
